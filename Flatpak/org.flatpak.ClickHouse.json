@@ -1,0 +1,30 @@
+{
+  "id" : "org.flatpak.ClickHouse",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "21.08",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-extensions" : [ "org.freedesktop.Sdk.Extension.llvm13" ],
+  "command" : "clickhouse",
+  "finish-args" : [ "--share=network", "--filesystem=host" ],
+  "modules" : [
+    {
+      "name" : "clickhouse",
+      "buildsystem" : "cmake-ninja",
+      "build-options" : {
+        "append-path" : "/usr/lib/sdk/llvm13/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm13/lib",
+        "cflags-override" : true,
+        "cxxflags-override" : true,
+        "ldflags-override" : true
+      },
+      "config-opts" : [ "-DCMAKE_C_COMPILER=clang", "-DCMAKE_CXX_COMPILER=clang++" ],
+      "builddir" : true,
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://github.com/ClickHouse/ClickHouse.git"
+        }
+      ]
+    }
+  ]
+}

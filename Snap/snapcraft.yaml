@@ -1,0 +1,34 @@
+name: clickhouse
+version: "v1.0"
+summary: Column-oriented database management system
+description: |
+    ClickHouse is a fast open-source column-oriented database management system 
+    that allows generating analytical data reports in real-time using SQL queries.
+
+base: core20
+confinement: devmode
+
+parts:
+    clickhouse:
+        plugin: cmake
+        cmake-generator: Ninja
+        cmake-parameters:
+            - -DCMAKE_C_COMPILER=clang-14
+            - -DCMAKE_CXX_COMPILER=clang++-14
+        source-type: git
+        source: https://github.com/ClickHouse/ClickHouse.git
+        build-packages:
+            - lsb-release
+            - software-properties-common
+            - wget
+            - python
+            - make
+            - cmake
+            - ninja-build
+        override-build: |
+            sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+            snapcraftctl build
+
+apps:
+    clickhouse:
+        command: usr/local/bin/clickhouse

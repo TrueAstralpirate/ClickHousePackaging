@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=clickhouse
+Exec=clickhouse
+Icon=terminal-icon-256
+Type=Application
+Categories=Utility;

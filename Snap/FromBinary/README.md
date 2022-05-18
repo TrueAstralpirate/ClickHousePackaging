@@ -5,7 +5,7 @@ Follow these steps to create Snap of ClickHouse from binary:
 ```
 sudo snap install snapcraft --classic
 ```
-3. Put ```clickhouse``` binary to the same directory with ```snapcraft.yaml```.
+3. Put ```clickhouse``` binary to the same directory as ```snapcraft.yaml```.
 4. Run ```snapcraft``` in the directory with ```snapcraft.yaml```.
 5. You will get ```clickhouse_*.snap``` file, which you can then install locally:
 ```

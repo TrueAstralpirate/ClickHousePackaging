@@ -1,0 +1,23 @@
+{
+  "id" : "org.flatpak.ClickHouse",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "21.08",
+  "sdk" : "org.freedesktop.Sdk",
+  "command" : "clickhouse",
+  "finish-args" : [ "--share=network", "--filesystem=host" ],
+  "modules" : [
+    {
+      "name" : "clickhouse",
+      "buildsystem": "simple",
+      "build-commands": [
+          "install -D clickhouse /app/bin/clickhouse"
+      ],
+      "sources" : [
+        {
+          "type" : "file",
+          "path" : "clickhouse"
+        }
+      ]
+    }
+  ]
+}
